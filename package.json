@@ -13,6 +13,7 @@
   "author": "Kevin Aguiar",
   "license": "MIT",
   "dependencies": {
-    "impress.js": "^1.0.0"
+    "impress.js": "^1.0.0",
+    "lato-font": "^3.0.0"
   }
 }
