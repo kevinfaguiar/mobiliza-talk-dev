@@ -1,0 +1,18 @@
+{
+  "name": "talk-dev",
+  "version": "1.0.0",
+  "description": "Apresentaçao para os mobilizadores da area de dev.",
+  "main": "presentation.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mobiliza",
+    "talks"
+  ],
+  "author": "Kevin Aguiar",
+  "license": "MIT",
+  "dependencies": {
+    "impress.js": "^1.0.0"
+  }
+}
