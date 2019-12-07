@@ -47,8 +47,14 @@ const starWarsHtml = `
 
 starWarsNode.innerHTML = starWarsHtml;
 
+var currentStep = null;
+
+function getCurrentStepValue() { return currentStep };
+
 rootElement.addEventListener("impress:stepenter", function (event) {
-  var currentStep = event.target.id;
+  currentStep = event.target.id;
+  starWarsNode.remove();
+  starWarsIntro.remove();
 
   switch (currentStep) {
     case 'intro':
@@ -71,7 +77,7 @@ rootElement.addEventListener("impress:stepenter", function (event) {
 });
 
 rootElement.addEventListener("impress:stepleave", function (event) {
-  var currentStep = event.target.id;
+  currentStep = event.target.id;
 
   switch (currentStep) {
     case 'historia':
