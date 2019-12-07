@@ -22,7 +22,7 @@ img.title {
   color: white;
   font-weight: bold;
   position: absolute;
-  left: 0;
+  left: -5;
   top: 50;
   z-index: 1;
   width: 500px;
@@ -75,15 +75,33 @@ h1.title {
   margin: 20px 0;
 }
 
+#intro-logo {
+  position: absolute;
+  width: 800px;
+  height: 164px;
+  top: calc(50% - 82px);
+  left: 0;
+}
+
+#intro-title {
+  position: absolute;
+  background-color: #F55523;
+  color: #fafafa;
+  font-weight: bold;
+  font-size: 4rem;
+  top: calc(50% - 20px);
+  right: 50px;
+}
+
 
 /*Star Wars Animation CSS*/
-.fade {
-  position: relative;
-  width: 100%;
-  min-height: 60vh;
-  top: 50px;
-  background-image: linear-gradient(0deg, transparent, black 75%);
-  z-index: 1;
+.star-wars-intro {
+  color: #b68cd9;
+  font-size: 4rem;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  animation: fadeInFromNone 2s ease-in-out;
 }
 
 .star-wars {
@@ -98,14 +116,15 @@ h1.title {
   line-height: 150%;
   perspective: 400px;
   text-align: justify;
-  color: #b68cd9;
+  color: #F55523;
+  padding-top: 30vh;
 }
 
 .crawl {
   position: relative;
   top: 99999px;
   transform-origin: 50% 100%;
-  animation: crawl 60s linear;
+  animation: crawl 120s ease-out infinite, fadeInFromNone 2s ease-in-out;
 }
 
 .crawl > .title {
@@ -120,11 +139,25 @@ h1.title {
 
 @keyframes crawl {
   0% {
-    top: -100px;
+    top: -200px;
     transform: rotateX(20deg)  translateZ(0);
   }
   100% { 
     top: -6000px;
     transform: rotateX(25deg) translateZ(-2500px);
+  }
+}
+
+@keyframes fadeInFromNone {
+  0% {
+    opacity: 0;
+  }
+
+  1% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

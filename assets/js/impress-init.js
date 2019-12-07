@@ -5,6 +5,10 @@ rootElement.addEventListener("impress:init", function () {
   document.getElementById('historia').style.backgroundColor = 'black';
 });
 
+var starWarsIntro = document.createElement("div");
+starWarsIntro.className = "star-wars-intro";
+starWarsIntro.textContent = "A long time ago in a galaxy far, far away..."
+
 var starWarsNode = document.createElement("section");
 starWarsNode.className = "step-content star-wars";
 
@@ -47,9 +51,18 @@ rootElement.addEventListener("impress:stepenter", function (event) {
   var currentStep = event.target.id;
 
   switch (currentStep) {
+    case 'intro':
+      document.getElementsByTagName('body')[0].style.backgroundColor = 'rgba(86, 43, 129)';
+      document.getElementById('intro').style.backgroundImage
+        = 'linear-gradient(rgba(86, 43, 129, 0.73), rgba(86, 43, 129, 0.73)), url(./assets/presentation/bg.png)';
+      break;
     case 'historia':
       document.getElementsByTagName('body')[0].style.backgroundColor = 'black';
-      document.getElementById('historia').appendChild(starWarsNode);
+      document.getElementById('historia').appendChild(starWarsIntro);
+      setTimeout(() => {
+        starWarsIntro.remove();
+        document.getElementById('historia').appendChild(starWarsNode);
+      }, 2000);
       break;
 
     default:
@@ -63,7 +76,7 @@ rootElement.addEventListener("impress:stepleave", function (event) {
   switch (currentStep) {
     case 'historia':
       document.getElementsByTagName('body')[0].style.backgroundColor = '#f2eff6';
-      document.getElementsByClassName('star-wars')[0].remove();
+      starWarsNode.remove();
       break;
 
     default:
@@ -81,8 +94,8 @@ logoImg.src = './assets/logo/logo.png';
 for (var i = 0; i < len; i++) {
   var clonedNode = logoImg.cloneNode(true);
 
-  // IF IS historia
-  if (i === 1) {
+  // IF IS intro || historia
+  if (i === 0 || i === 1) {
     clonedNode.style.display = 'none';
   }
 
@@ -95,6 +108,12 @@ titleImg.src = './assets/presentation/title.png';
 
 for (var i = 0; i < len; i++) {
   var clonedNode = titleImg.cloneNode(true);
+
+  // IF IS intro || historia
+  if (i === 0 || i === 1) {
+    clonedNode.style.display = 'none';
+  }
+
   steps[i].appendChild(clonedNode);
 }
 
