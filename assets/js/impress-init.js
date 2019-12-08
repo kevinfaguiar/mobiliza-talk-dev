@@ -164,7 +164,6 @@ rootElement.addEventListener("impress:stepleave", function (event) {
       document.getElementsByTagName('body')[0].style.backgroundColor = '#EFECF5';
       document.getElementById('historia-inner-div').remove();
       break;
-
     default:
       break;
   }
