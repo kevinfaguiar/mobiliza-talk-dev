@@ -152,6 +152,7 @@ rootElement.addEventListener("impress:stepenter", function (event) {
         }, 1000);
       });
     default:
+      document.getElementsByTagName('body')[0].style.backgroundColor = '#EFECF5';
       break;
   }
 });
