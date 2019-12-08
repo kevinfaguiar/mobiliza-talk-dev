@@ -1,3 +1,23 @@
+function smoothFadeIn(elementId, textContent) {
+  var text = document.getElementById(elementId);
+  text.style.display = 'none';
+  text.innerText = textContent;
+  var newDom = '';
+  var animationDelay = 6;
+
+  for (let i = 0; i < text.innerText.length; i++) {
+    newDom += '<span class="char">' + (text.innerText[i] == ' ' ? '&nbsp;' : text.innerText[i]) + '</span>';
+  }
+
+  text.innerHTML = newDom;
+  var length = text.children.length;
+
+  for (let i = 0; i < length; i++) {
+    text.children[i].style['animation-delay'] = animationDelay * i + 'ms';
+  }
+  text.style.display = 'inline-block';
+}
+
 var rootElement = document.getElementById("impress");
 rootElement.addEventListener("impress:init", function () {
   document.getElementsByTagName('html')[0].style.visibility = 'visible';
@@ -49,12 +69,10 @@ starWarsNode.innerHTML = starWarsHtml;
 
 var currentStep = null;
 
-function getCurrentStepValue() { return currentStep };
-
 rootElement.addEventListener("impress:stepenter", function (event) {
   currentStep = event.target.id;
-  starWarsNode.remove();
-  starWarsIntro.remove();
+  var historiaInnerDiv = document.getElementById('historia-inner-div');
+  if (historiaInnerDiv) historiaInnerDiv.remove();
 
   switch (currentStep) {
     case 'intro':
@@ -63,13 +81,22 @@ rootElement.addEventListener("impress:stepenter", function (event) {
         = 'linear-gradient(rgba(86, 43, 129, 0.73), rgba(86, 43, 129, 0.73)), url(./assets/presentation/bg.png)';
       break;
     case 'historia':
+      historiaInnerDiv = document.createElement('div');
+      historiaInnerDiv.id = 'historia-inner-div';
+      document.getElementById('historia').appendChild(historiaInnerDiv);
       document.getElementsByTagName('body')[0].style.backgroundColor = 'black';
-      document.getElementById('historia').appendChild(starWarsIntro);
+      document.getElementById('historia-inner-div').appendChild(starWarsIntro);
       setTimeout(() => {
-        starWarsIntro.remove();
-        document.getElementById('historia').appendChild(starWarsNode);
+        if (document.getElementById('historia-inner-div')) {
+          starWarsIntro.remove();
+          document.getElementById('historia-inner-div').appendChild(starWarsNode);
+        }
       }, 2000);
       break;
+    case 'ending':
+      smoothFadeIn('steve-jobs-quote-line-1', '"Todo mundo deveria aprender a programar');
+      smoothFadeIn('steve-jobs-quote-line-2', 'porque isso te ensina a pensar."');
+      smoothFadeIn('steve-jobs-name', 'Steve Jobs');
 
     default:
       break;
@@ -82,7 +109,7 @@ rootElement.addEventListener("impress:stepleave", function (event) {
   switch (currentStep) {
     case 'historia':
       document.getElementsByTagName('body')[0].style.backgroundColor = '#f2eff6';
-      starWarsNode.remove();
+      document.getElementById('historia-inner-div').remove();
       break;
 
     default:
@@ -107,22 +134,5 @@ for (var i = 0; i < len; i++) {
 
   steps[i].appendChild(clonedNode);
 }
-
-var titleImg = document.createElement("img");
-titleImg.className = "title";
-titleImg.src = './assets/presentation/title.png';
-
-for (var i = 0; i < len; i++) {
-  var clonedNode = titleImg.cloneNode(true);
-
-  // IF IS intro || historia
-  if (i === 0 || i === 1) {
-    clonedNode.style.display = 'none';
-  }
-
-  steps[i].appendChild(clonedNode);
-}
-
-
 
 impress().init();

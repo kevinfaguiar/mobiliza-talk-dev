@@ -17,28 +17,18 @@ body {
   width: 200px;
 }
 
-img.title {
-  background-repeat: no-repeat;
-  color: white;
-  font-weight: bold;
-  position: absolute;
-  left: -5;
-  top: 50;
-  z-index: 1;
-  width: 500px;
-  height: 103px;
-}
-
 h1.title {
   background-repeat: no-repeat;
   color: white;
   font-weight: bold;
   position: absolute;
-  left: 20;
+  left: 0;
   top: 45;
   font-size: 3rem;
   z-index: 2;
-  max-width: 500px;
+  background-color: #F55523;
+  padding: 5px;
+  border-radius: 3px;
 }
 
 .step {
@@ -86,11 +76,13 @@ h1.title {
 #intro-title {
   position: absolute;
   background-color: #F55523;
+  padding: 5px;
+  border-radius: 3px;
   color: #fafafa;
   font-weight: bold;
   font-size: 4rem;
   top: calc(50% - 20px);
-  right: 50px;
+  right: 250px;
 }
 
 
@@ -159,5 +151,61 @@ h1.title {
 
   100% {
     opacity: 1;
+  }
+}
+
+/*Ending */
+.underline-ending {
+  color: #F55523;
+  font-size: 8rem;
+}
+
+.text-ending {
+  color: rgb(86, 43, 129);
+  font-size: 5rem;
+}
+
+#ending-content {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+}
+
+#steve-jobs-quote-line-1 {
+  position: absolute;
+  top: 45vh;
+  left: 10%;
+  color: #F55523;
+  font-size: 4rem;
+}
+
+#steve-jobs-quote-line-2 {
+  position: absolute;
+  top: 55vh;
+  left: 13%;
+  color: #F55523;
+  font-size: 4rem;
+}
+
+#steve-jobs-name {
+  position: absolute;
+  top: 60vh;
+  right: 30vh;
+  color: #F55523;
+  font-size: 4rem;
+}
+
+.char{
+  animation: an 1s ease-out 1 both;
+}
+
+@keyframes an{
+  from{
+      opacity: 0;
+      transform: perspective(500px) translate3d(-35px, -40px, -150px) rotate3d(1, -1, 0, 35deg);
+  }
+  to{
+      opacity: 1;
+      transform: perspective(500px) translate3d(0, 0, 0);
   }
 }
