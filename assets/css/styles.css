@@ -42,6 +42,7 @@ h1.title {
 
   font-size: 30px;
   letter-spacing: -1px;
+  background-color: rgba(241, 238, 246);
   background-image: linear-gradient(rgba(241, 238, 246, 0.7), rgba(241, 238, 246, 0.4)), url('../presentation/pattern.png');
   background-size: cover;
 }
@@ -239,4 +240,13 @@ h1.title {
 
 .hidden {
   visibility: hidden;
+}
+
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+  opacity: 0;  /* make things invisible upon start */
+  animation: fadeIn ease-in 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
 }

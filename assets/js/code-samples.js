@@ -1,7 +1,9 @@
+// Variável
 var devMaisLindo = 'Kevin';
 
 console.log(devMaisLindo); // O dev mais lindo é o Kevin
 
+// Condição
 var devMaisLindo = 'Kevin';
 
 if (devMaisLindo == 'Kevin') {
@@ -10,6 +12,7 @@ if (devMaisLindo == 'Kevin') {
   console.log('Tem algo errado aí!');
 }
 
+// Loop
 var devMaisLindo = 'Fran';
 
 var listaDevs = ['Kevin', 'Togo', 'Fran'];

@@ -8,7 +8,7 @@ function consoleText(words, id, cb) {
   var target = document.getElementById(id);
   target.setAttribute('style', 'color:' + colors[0]);
   target.setAttribute('style', 'font-size: 5rem');
-  const interval = window.setInterval(function () {
+  var interval = window.setInterval(function () {
     if (letterCount === 0 && waiting === false) {
       waiting = true;
       target.innerHTML = words[0].substring(0, letterCount)
@@ -56,14 +56,14 @@ function smoothFadeIn(elementId, textContent) {
   var newDom = '';
   var animationDelay = 6;
 
-  for (let i = 0; i < text.innerText.length; i++) {
+  for (var i = 0; i < text.innerText.length; i++) {
     newDom += '<span class="char">' + (text.innerText[i] == ' ' ? '&nbsp;' : text.innerText[i]) + '</span>';
   }
 
   text.innerHTML = newDom;
   var length = text.children.length;
 
-  for (let i = 0; i < length; i++) {
+  for (var i = 0; i < length; i++) {
     text.children[i].style['animation-delay'] = animationDelay * i + 'ms';
   }
   text.style.display = 'inline-block';
@@ -83,7 +83,7 @@ starWarsIntro.textContent = "A long time ago in a galaxy far, far away..."
 var starWarsNode = document.createElement("section");
 starWarsNode.className = "step-content star-wars";
 
-const starWarsHtml = `
+var starWarsHtml = `
 <div class="crawl">
   <div class="title">
     <p>EPISÓDIO I</p>
