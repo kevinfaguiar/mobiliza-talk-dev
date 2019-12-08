@@ -1,3 +1,54 @@
+function consoleText(words, id, cb) {
+  var colors = ['#562b81'];
+  var visible = true;
+  var con = document.getElementById('console');
+  var letterCount = 1;
+  var x = 1;
+  var waiting = false;
+  var target = document.getElementById(id);
+  target.setAttribute('style', 'color:' + colors[0]);
+  target.setAttribute('style', 'font-size: 5rem');
+  const interval = window.setInterval(function () {
+    if (letterCount === 0 && waiting === false) {
+      waiting = true;
+      target.innerHTML = words[0].substring(0, letterCount)
+      window.setTimeout(function () {
+        var usedColor = colors.shift();
+        colors.push(usedColor);
+        var usedWord = words.shift();
+        words.push(usedWord);
+        x = 1;
+        target.setAttribute('style', 'color:' + colors[0])
+        target.setAttribute('style', 'font-size: 5rem')
+        letterCount += x;
+        waiting = false;
+      }, 1000)
+    } else if (letterCount === words[0].length + 1 && waiting === false) {
+      waiting = true;
+      window.setTimeout(function () {
+        x = -1;
+        letterCount += x;
+        waiting = false;
+      }, 1000)
+      cb();
+      clearInterval(interval);
+    } else if (waiting === false) {
+      target.innerHTML = words[0].substring(0, letterCount)
+      letterCount += x;
+    }
+  }, 120)
+  window.setInterval(function () {
+    if (visible === true) {
+      con.className = 'underline-ending hidden'
+      visible = false;
+
+    } else {
+      con.className = 'underline-ending'
+      visible = true;
+    }
+  }, 400)
+}
+
 function smoothFadeIn(elementId, textContent) {
   var text = document.getElementById(elementId);
   text.style.display = 'none';
@@ -36,7 +87,7 @@ const starWarsHtml = `
 <div class="crawl">
   <div class="title">
     <p>EPISÓDIO I</p>
-    <h1>O QUE É PROGRAMAÇÃO</h1>
+    <h1>DESENVOLVIMENTO DE SOFTWARE</h1>
   </div>
 
   <p>Há muito tempo atrás uma civilização descobria o poder da computação através dele, o pai da computação: Alan
@@ -94,10 +145,12 @@ rootElement.addEventListener("impress:stepenter", function (event) {
       }, 2000);
       break;
     case 'ending':
-      smoothFadeIn('steve-jobs-quote-line-1', '"Todo mundo deveria aprender a programar');
-      smoothFadeIn('steve-jobs-quote-line-2', 'porque isso te ensina a pensar."');
-      smoothFadeIn('steve-jobs-name', 'Steve Jobs');
-
+      consoleText(['vamos desenvolver softwares juntos?'], 'console-text-ending', () => {
+        setTimeout(() => {
+          smoothFadeIn('steve-jobs-quote', '"Todo mundo deveria aprender a programar porque isso te ensina a pensar."');
+          setTimeout(() => smoothFadeIn('steve-jobs-name', 'Steve Jobs'), 1000);
+        }, 1000);
+      });
     default:
       break;
   }
@@ -108,7 +161,7 @@ rootElement.addEventListener("impress:stepleave", function (event) {
 
   switch (currentStep) {
     case 'historia':
-      document.getElementsByTagName('body')[0].style.backgroundColor = '#f2eff6';
+      document.getElementsByTagName('body')[0].style.backgroundColor = '#EFECF5';
       document.getElementById('historia-inner-div').remove();
       break;
 
