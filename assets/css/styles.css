@@ -215,16 +215,27 @@ h1.title {
   position: absolute;
   display: block;
   color: #F55523;
+  width: 1800px;
   margin-top: 500px;
+  text-align: right;
+}
+
+#steve-jobs-quote {
+  width: 100%;
+  text-align: right;
+  font-size: 2.5rem;
 }
 
 #steve-jobs-name {
-  float: right;
+  width: 100%;
+  text-align: right;
   margin-right: 50px;
+  font-size: 2.5rem;
 }
 
 .char{
   animation: an 1s ease-out 1 both;
+  font-size: 2.5rem;
 }
 
 @keyframes an{
