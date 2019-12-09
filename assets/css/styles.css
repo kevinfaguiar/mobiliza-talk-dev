@@ -78,23 +78,22 @@ h1.title {
 }
 
 #intro-logo {
-  position: absolute;
   width: 800px;
   height: 164px;
-  top: calc(50% - 82px);
-  left: 0;
+  float: left;
+  margin-top: calc(50vh - 82px);
 }
 
 #intro-title {
-  position: absolute;
   background-color: #F55523;
   padding: 5px;
   border-radius: 3px;
   color: #fafafa;
   font-weight: bold;
   font-size: 5rem;
-  top: calc(50% - 40px);
-  right: 250px;
+  float: right;
+  margin-right: 10px;
+  margin-top: calc(50vh - 30px);
 }
 
 #oque #programming-is-magic {
