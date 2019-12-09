@@ -91,7 +91,7 @@ var starWarsHtml = `
   </div>
 
   <p>A máquina de Babbage foi provavelmente a máquina precursora do computador moderno. Utilizando ela, Ada, a condessa de Lovelace, 
-  descreveu procedimentos matemáticos de uma forma lógica visando chegar em um resultado... o que deu origem a um artigo. 
+  descreveu de um artigo procedimentos matemáticos de uma forma lógica visando chegar em um resultado.
   Por conta disso, Ada é até hoje considerada o primeiro programador da história da humanidade.</p>
 
   <p>A ciência da computação, e consequentemente a programação, só voltaria a ser aprimorada 
